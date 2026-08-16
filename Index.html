@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>استبانة قياس رضا عملاء بيت التمكين</title>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=ZC_g7q3SJIePKJiszTHO5TmdbVu4whlLFEeQ8VMbQ1BuwuKjVledWWfaos5IK3R0cp3He7SovZS9w3gHx8nVrS7gpmqEW7qULHd7d47Zjww0xApWssxLkThyKCKv-GQ3fVZQHVrXl6bAEaGJ6hPMlq9inhkAyn0cIcg0Fx4EfyOFUFwnGtFxcacz48MJV8lDXZixp_yK8ohwMZKWBr3L7yuoemBHOlkOYelIBGlqQUl9NV2qPLf8KazcWVMJ8nKeCF21cnC8W60-FHXitP2ygw" charset="UTF-8"></script><style>
+    :root {
+      --primary: #173b57;
+      --secondary: #eef4f8;
+      --border: #d9e2e8;
+      --text: #1f2933;
+      --muted: #637381;
+      --success: #eaf7ef;
+      --danger: #fff0f0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f6f8fa;
+      color: var(--text);
+      line-height: 1.8;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 30px auto;
+      padding: 0 16px 50px;
+    }
+    .hero, .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.04);
+    }
+    h1 { margin-top: 0; color: var(--primary); font-size: 28px; }
+    h2 { color: var(--primary); font-size: 21px; margin-top: 0; }
+    .muted { color: var(--muted); }
+    .scale-note {
+      background: var(--secondary);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-top: 12px;
+    }
+    .question {
+      padding: 18px 0;
+      border-bottom: 1px solid #edf0f2;
+    }
+    .question:last-child { border-bottom: 0; }
+    .question-title {
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .required::after { content: " *"; color: #c62828; }
+    select, textarea, input[type="email"] {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font: inherit;
+      background: #fff;
+    }
+    textarea { min-height: 110px; resize: vertical; }
+    .choices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .choice {
+      position: relative;
+    }
+    .choice input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .choice label {
+      display: inline-block;
+      min-width: 48px;
+      text-align: center;
+      padding: 9px 13px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      background: #fff;
+    }
+    .choice input:checked + label {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .checks {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 8px;
+    }
+    .check-item {
+      padding: 9px 10px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+    }
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 14px 18px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      background: var(--primary);
+      color: #fff;
+      font-size: 17px;
+    }
+    button:disabled { opacity: .6; cursor: not-allowed; }
+    #status {
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 10px;
+      display: none;
+    }
+    #status.success { display:block; background:var(--success); }
+    #status.error { display:block; background:var(--danger); color:#8b1e1e; }
+    @media (max-width: 640px) {
+      .checks { grid-template-columns: 1fr; }
+      h1 { font-size: 23px; }
+      .hero, .card { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <h1>استبانة قياس رضا عملاء بيت التمكين</h1>
+    <p>
+      تهدف هذه الاستبانة إلى قياس مستوى رضا العملاء عن الخدمات المقدمة،
+      والتعرف على نقاط القوة وفرص التحسين، ودعم القرارات التطويرية بالبيانات.
+    </p>
+    <p class="muted">نقدّر مشاركتكم، وستستخدم الإجابات لأغراض تحسين الجودة وتجربة العميل.</p>
+  </section>
+
+  <form id="surveyForm">
+    <section class="card">
+      <h2>أولًا: معلومات عامة</h2>
+
+      <div class="question">
+        <div class="question-title required">1. ما نوع الجهة التي تمثلها؟</div>
+        <select id="entityType" required>
+          <option value="">اختر...</option>
+          <option>جمعية أهلية</option>
+          <option>مؤسسة غير ربحية</option>
+          <option>وقف</option>
+          <option>مبادرة مجتمعية</option>
+          <option>شركة</option>
+          <option>جهة حكومية</option>
+          <option>فرد</option>
+          <option>أخرى</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <div class="question-title">2. ما الخدمة التي حصلت عليها من بيت التمكين؟</div>
+        <div class="checks">
+          <label class="check-item"><input type="checkbox" name="services" value="التسويق الرقمي"> التسويق الرقمي</label>
+          <label class="check-item"><input type="checkbox" name="services" value="إدارة الحملات التسويقية"> إدارة الحملات التسويقية</label>
+          <label class="check-item"><input type="checkbox" name="services" value="صناعة المحتوى"> صناعة المحتوى</label>
+          <label class="check-item"><input type="checkbox" name="services" value="إدارة منصات التواصل الاجتماعي"> إدارة منصات التواصل الاجتماعي</label>
+          <label class="check-item"><input type="checkbox" name="services" value="التصميم والإنتاج الإبداعي"> التصميم والإنتاج الإبداعي</label>
+          <label class="check-item"><input type="checkbox" name="services" value="بناء الهوية"> بناء الهوية</label>
+          <label class="check-item"><input type="checkbox" name="services" value="الاستشارات التسويقية"> الاستشارات التسويقية</label>
+          <label class="check-item"><input type="checkbox" name="services" value="تطوير الأفكار والمبادرات"> تطوير الأفكار والمبادرات</label>
+          <label class="check-item"><input type="checkbox" name="services" value="إعداد الخطط والاستراتيجيات"> إعداد الخطط والاستراتيجيات</label>
+          <label class="check-item"><input type="checkbox" name="services" value="أخرى"> أخرى</label>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>ثانيًا: تقييم تجربة العميل</h2>
+      <div class="scale-note">
+        مقياس الإجابة: 1 = غير راضٍ جدًا، 2 = غير راضٍ، 3 = محايد، 4 = راضٍ، 5 = راضٍ جدًا.
+      </div>
+      <div id="ratingQuestions"></div>
+    </section>
+
+    <section class="card">
+      <h2>ثالثًا: صافي نقاط الترويج NPS</h2>
+      <div class="question">
+        <div class="question-title required">20. ما مدى احتمالية أن توصي ببيت التمكين لجهة أو شخص آخر؟</div>
+        <p class="muted">0 = غير محتمل إطلاقًا، 10 = محتمل جدًا.</p>
+        <div class="choices" id="npsChoices"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>رابعًا: صوت العميل</h2>
+
+      <div class="question">
+        <div class="question-title">21. ما أكثر شيء أعجبك في تجربتك مع بيت التمكين؟</div>
+        <textarea id="q21"></textarea>
+      </div>
+
+      <div class="question">
+        <div class="question-title">22. ما الجانب الذي ترى أنه يحتاج إلى تحسين؟</div>
+        <textarea id="q22"></textarea>
+      </div>
+
+      <div class="question">
+        <div class="question-title">23. ما الخدمات أو الحلول التي تتمنى أن يقدمها بيت التمكين مستقبلًا؟</div>
+        <textarea id="q23"></textarea>
+      </div>
+
+      <div class="question">
+        <div class="question-title">24. هل لديك أي ملاحظات أو مقترحات إضافية؟</div>
+        <textarea id="q24"></textarea>
+      </div>
+    </section>
+
+    <section class="card">
+      <button type="submit" id="submitBtn">إرسال الاستبانة</button>
+      <div id="status"></div>
+    </section>
+  </form>
+</div>
+
+<script>
+  const questions = [
+    [3, 'ما مدى رضاك العام عن تجربتك مع بيت التمكين؟'],
+    [4, 'ما مدى رضاك عن فهم الفريق لاحتياجات جهتك؟'],
+    [5, 'ما مدى رضاك عن جودة الخدمة المقدمة؟'],
+    [6, 'ما مدى رضاك عن جودة المخرجات النهائية؟'],
+    [7, 'ما مدى رضاك عن مستوى الإبداع والابتكار في الأفكار والحلول المقدمة؟'],
+    [8, 'ما مدى رضاك عن ملاءمة الحلول المقدمة لأهداف جهتك؟'],
+    [9, 'ما مدى رضاك عن احترافية فريق العمل؟'],
+    [10, 'ما مدى رضاك عن وضوح التواصل مع الفريق؟'],
+    [11, 'ما مدى رضاك عن سرعة الاستجابة للاستفسارات والطلبات؟'],
+    [12, 'ما مدى رضاك عن الالتزام بالمواعيد المتفق عليها؟'],
+    [13, 'ما مدى رضاك عن متابعة الفريق لمراحل العمل؟'],
+    [14, 'ما مدى رضاك عن مرونة الفريق في التعامل مع التعديلات؟'],
+    [15, 'ما مدى رضاك عن معالجة الملاحظات والتعديلات؟'],
+    [16, 'ما مدى رضاك عن سهولة الحصول على الخدمة والتعامل مع الفريق؟'],
+    [17, 'ما مدى رضاك عن القيمة التي حصلت عليها مقابل تكلفة الخدمة؟'],
+    [18, 'إلى أي مدى ساهمت الخدمة المقدمة في تحقيق أهداف جهتك؟'],
+    [19, 'ما مدى احتمالية تعاملك مع بيت التمكين مرة أخرى؟']
+  ];
+
+  const ratingContainer = document.getElementById('ratingQuestions');
+  questions.forEach(([num, text]) => {
+    const box = document.createElement('div');
+    box.className = 'question';
+    box.innerHTML = `
+      <div class="question-title required">${num}. ${text}</div>
+      <div class="choices">
+        ${[1,2,3,4,5].map(v => `
+          <span class="choice">
+            <input type="radio" id="q${num}_${v}" name="q${num}" value="${v}" required>
+            <label for="q${num}_${v}">${v}</label>
+          </span>`).join('')}
+      </div>`;
+    ratingContainer.appendChild(box);
+  });
+
+  const npsChoices = document.getElementById('npsChoices');
+  for (let v = 0; v <= 10; v++) {
+    npsChoices.insertAdjacentHTML('beforeend', `
+      <span class="choice">
+        <input type="radio" id="q20_${v}" name="q20" value="${v}" required>
+        <label for="q20_${v}">${v}</label>
+      </span>`);
+  }
+
+  document.getElementById('surveyForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const btn = document.getElementById('submitBtn');
+    const status = document.getElementById('status');
+    status.className = '';
+    status.style.display = 'none';
+
+    if (!this.reportValidity()) return;
+
+    const data = {
+      entityType: document.getElementById('entityType').value,
+      services: [...document.querySelectorAll('input[name="services"]:checked')].map(el => el.value),
+      q21: document.getElementById('q21').value.trim(),
+      q22: document.getElementById('q22').value.trim(),
+      q23: document.getElementById('q23').value.trim(),
+      q24: document.getElementById('q24').value.trim()
+    };
+
+    for (let i = 3; i <= 20; i++) {
+      const selected = document.querySelector(`input[name="q${i}"]:checked`);
+      data[`q${i}`] = selected ? selected.value : '';
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'جارٍ الإرسال...';
+
+    google.script.run
+      .withSuccessHandler(function(result) {
+        status.className = 'success';
+        status.style.display = 'block';
+        status.textContent = 'تم إرسال الاستبانة بنجاح. شكرًا لمشاركتكم.';
+        document.getElementById('surveyForm').reset();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        btn.disabled = false;
+        btn.textContent = 'إرسال الاستبانة';
+      })
+      .withFailureHandler(function(err) {
+        status.className = 'error';
+        status.style.display = 'block';
+        status.textContent = err && err.message ? err.message : 'حدث خطأ أثناء حفظ الاستجابة.';
+        btn.disabled = false;
+        btn.textContent = 'إرسال الاستبانة';
+      })
+      .saveResponse(data);
+  });
+</script>
+</body>
+</html>
